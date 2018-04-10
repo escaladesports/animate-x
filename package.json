@@ -1,12 +1,12 @@
 {
   "name": "animate-x",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "keywords": [
     "animate",
     "tween",
     "number",
-	 "object",
-	 "array"
+    "object",
+    "array"
   ],
   "main": "dist/index.js",
   "browser": "dist-browser/index.js",

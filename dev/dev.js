@@ -14,3 +14,7 @@ let animation = new Animation({
 	}
 })
 animation.start()
+
+document.addEventListener('click', () => {
+	animation.toggle()
+})

@@ -10,20 +10,38 @@ class Animate{
 		for(let i in options){
 			this[i] = options[i]
 		}
+		this.reset()
 		this.engine = rafLoop(this.step.bind(this))
 	}
-	start(){
+	reset() {
+		this.stop()
+		this.time = 0
 		this.type = typeof this.from
-		if(this.type === 'number'){
+		if (this.type === 'number') {
 			this.state = this.from
 		}
-		else{
+		else {
 			this.state = clone(this.from)
 		}
+	}
+	start(){
+		this.reset()
+		this.animating = true
 		this.engine.start()
 	}
 	stop(){
+		this.animating = false
+		if (this.engine) {
+			this.engine.stop()
+		}
+	}
+	pause(){
+		this.stop()
 		this.engine.stop()
+	}
+	unpause() {
+		this.animating = true
+		this.engine.start()
 	}
 	step(delta){
 		this.time += delta
@@ -40,17 +58,29 @@ class Animate{
 		this.onStep(this.state)
 	}
 	end() {
+		this.stop()
 		this.state = clone(this.to)
-		this.stop()
+		this.onStep(this.state)
 		this.onEnd()
-	}
-	reset(){
-		this.stop()
-		this.time = 0
-		this.state = clone(this.from)
 	}
 	tweenNumber(from, to){
 		return from + this.easing(this.time / this.duration) * to - from
+	}
+	toggle(){
+		if(this.animating){
+			this.stop()
+		}
+		else{
+			this.start()
+		}
+	}
+	togglePause() {
+		if (this.animating) {
+			this.pause()
+		}
+		else {
+			this.unpause()
+		}
 	}
 	deepTween(state, from, to){
 		for(let i in from){
@@ -69,6 +99,7 @@ const defaultOptions = {
 	to: 100,
 	duration: 1000,
 	time: 0,
+	animating: false,
 	easing: t => t,
 	onStart: noop,
 	onStep: noop,

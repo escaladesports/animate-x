@@ -1,6 +1,6 @@
 # Animate X
 
-A super small animation library for animating numbers and objects.
+A super small animation library for animating numbers, objects, and arrays.
 
 ## Installation
 
@@ -47,15 +47,15 @@ var el = document.querySelector('div')
 
 var anim = new Animation({
       from: {
-			x: 0,
-			y: 0
-		},
+         x: 0,
+         y: 0
+      },
       to: {
-			x: 100,
-			y: 50
-		},
-   	duration: 1000,
-		easing: eases.bounceOut,
+         x: 100,
+         y: 50
+      },
+      duration: 1000,
+      easing: eases.bounceOut,
       onStep: function(state){
          el.style.transform = 'translate(' + state.x + 'px, ' + state.y + 'px)'
       }
@@ -63,9 +63,9 @@ var anim = new Animation({
    .start()
 ```
 
-### Options
+## Options
 
-Property | Description | Default
+Option | Description | Default
 --- | --- | ---
 from | A number, object, or array to start tweening from | `0`
 to | A number, object, or array to tween to (must match schema of "from") | `100`
@@ -75,7 +75,7 @@ onStep | A function that will be called every frame, with the first argument bei
 onStart | A function that will be called every time the animation starts | n/a
 onEnd | A function that will be called every time the animation ends | n/a
 
-### Methods
+## Methods
 
 Method | Description
 --- | ---

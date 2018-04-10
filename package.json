@@ -2,10 +2,11 @@
   "name": "animate-x",
   "version": "0.0.0",
   "keywords": [
-    "javascript",
-    "node",
-    "module",
-    "boilerplate"
+    "animate",
+    "tween",
+    "number",
+	 "object",
+	 "array"
   ],
   "main": "dist/index.js",
   "browser": "dist-browser/index.js",

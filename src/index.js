@@ -23,6 +23,7 @@ class Animate{
 		else {
 			this.state = clone(this.from)
 		}
+		this.onStep(this.state)
 	}
 	start(){
 		this.reset()

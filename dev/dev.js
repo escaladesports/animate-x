@@ -6,11 +6,17 @@ el.textContent = 'test'
 document.body.appendChild(el)
 
 let animation = new Animation({
-	from: 0,
-	to: 50,
+	from: {
+		left: 0,
+		top: 0,
+	},
+	to: {
+		left: 50,
+		top: 100,
+	},
 	easing,
-	onStep: left => {
-		el.style.transform = `translateX(${left}px)`
+	onStep: ({left, top}) => {
+		el.style.transform = `translate(${left}px, ${top}px)`
 	}
 })
 animation.start()

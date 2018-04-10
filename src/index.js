@@ -13,7 +13,8 @@ class Animate{
 		this.engine = rafLoop(this.step.bind(this))
 	}
 	start(){
-		if(typeof this.from === 'string'){
+		this.type = typeof this.from
+		if(this.type === 'number'){
 			this.state = this.from
 		}
 		else{
@@ -30,7 +31,12 @@ class Animate{
 			this.end()
 			return
 		}
-		this.deepTween(this.state, this.from, this.to)
+		if(this.type === 'number'){
+			this.state = this.tweenNumber(this.from, this.to)
+		}
+		else {
+			this.deepTween(this.state, this.from, this.to)
+		}
 		this.onStep(this.state)
 	}
 	end() {

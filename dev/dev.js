@@ -5,13 +5,9 @@ el.textContent = 'test'
 document.body.appendChild(el)
 
 let animation = new Animation({
-	from: {
-		left: 0
-	},
-	to: {
-		left: 50
-	},
-	onStep: ({ left }) => {
+	from: 0,
+	to: 50,
+	onStep: left => {
 		el.style.transform = `translateX(${left}px)`
 	}
 })

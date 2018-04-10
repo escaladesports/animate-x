@@ -13,7 +13,7 @@
   "author": "Kennedy Rose <krose@escaladesports.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/escaladesports/javascript-module-boilerplate.git"
+    "url": "https://github.com/escaladesports/animate-x.git"
   },
   "license": "MIT",
   "scripts": {
@@ -23,7 +23,7 @@
     "prepublishOnly": "npm run build",
     "reset": "esca-scripts reset",
     "test": "esca-scripts test",
-    "travis": "opn https://travis-ci.org/escaladesports/javascript-module-boilerplate/branches"
+    "travis": "opn https://travis-ci.org/escaladesports/animate-x/branches"
   },
   "devDependencies": {
     "eases": "^1.0.8",

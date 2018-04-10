@@ -24,31 +24,36 @@ class Animate{
 			this.state = clone(this.from)
 		}
 		this.onStep(this.state)
+		return this
 	}
 	start(){
 		this.reset()
 		this.animating = true
 		this.engine.start()
+		return this
 	}
 	stop(){
 		this.animating = false
 		if (this.engine) {
 			this.engine.stop()
 		}
+		return this
 	}
 	pause(){
 		this.stop()
 		this.engine.stop()
+		return this
 	}
 	unpause() {
 		this.animating = true
 		this.engine.start()
+		return this
 	}
 	step(delta){
 		this.time += delta
 		if(this.time >= this.duration){
 			this.end()
-			return
+			return this
 		}
 		if(this.type === 'number'){
 			this.state = this.tweenNumber(this.from, this.to)
@@ -57,15 +62,14 @@ class Animate{
 			this.deepTween(this.state, this.from, this.to)
 		}
 		this.onStep(this.state)
+		return this
 	}
 	end() {
 		this.stop()
 		this.state = clone(this.to)
 		this.onStep(this.state)
 		this.onEnd()
-	}
-	tweenNumber(from, to){
-		return from + this.easing(this.time / this.duration) * to - from
+		return this
 	}
 	toggle(){
 		if(this.animating){
@@ -74,6 +78,7 @@ class Animate{
 		else{
 			this.start()
 		}
+		return this
 	}
 	togglePause() {
 		if (this.animating) {
@@ -82,6 +87,10 @@ class Animate{
 		else {
 			this.unpause()
 		}
+		return this
+	}
+	tweenNumber(from, to) {
+		return from + this.easing(this.time / this.duration) * to - from
 	}
 	deepTween(state, from, to){
 		for(let i in from){

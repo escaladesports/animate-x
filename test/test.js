@@ -17,6 +17,7 @@ describe('Animate class', () => {
 			})
 			.start()
 		setTimeout(() => {
+			anim.stop()
 			expect(anim.state).to.be.above(1)
 			expect(anim.state).to.be.below(100)
 			done()
@@ -24,14 +25,15 @@ describe('Animate class', () => {
 	})
 	it('Should reduce values', done => {
 		let anim = new Animate({
-				from: 1,
-				to: -100,
+				from: 100,
+				to: 0,
 				duration: 1000,
 			})
 			.start()
 		setTimeout(() => {
-			expect(anim.state).to.be.above(-100)
-			expect(anim.state).to.be.below(1)
+			anim.stop()
+			expect(anim.state).to.be.above(0)
+			expect(anim.state).to.be.below(100)
 			done()
 		}, 200)
 	})
@@ -43,6 +45,7 @@ describe('Animate class', () => {
 			})
 			.start()
 		setTimeout(() => {
+			anim.stop()
 			expect(anim.state).to.equal(50)
 			done()
 		}, 200)

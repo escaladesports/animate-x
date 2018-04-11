@@ -90,7 +90,7 @@ class Animate{
 		return this
 	}
 	tweenNumber(from, to) {
-		return from + this.easing(this.time / this.duration) * to - from
+		return from + this.easing(this.time / this.duration) * (to - from)
 	}
 	deepTween(state, from, to){
 		for(let i in from){

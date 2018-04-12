@@ -50,4 +50,19 @@ describe('Animate class', () => {
 			done()
 		}, 200)
 	})
+	it('Should loop animation', done => {
+		let anim = new Animate({
+				from: 100,
+				to: 0,
+				duration: 1000,
+				loop: true,
+			})
+			.start()
+		setTimeout(() => {
+			anim.stop()
+			expect(anim.state).to.be.above(0)
+			expect(anim.state).to.be.below(100)
+			done()
+		}, 1500)
+	})
 })

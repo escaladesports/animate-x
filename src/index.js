@@ -48,8 +48,13 @@ class Animate{
 	step(delta){
 		this.time += delta
 		if(this.time >= this.duration){
-			this.end()
-			return this
+			if(!this.loop) {
+				this.end()
+				return this
+			}
+			else{
+				this.time -= this.duration
+			}
 		}
 		this.state = this.keyframe(this.easing(this.time / this.duration))
 		this.onStep(this.state)
@@ -92,6 +97,7 @@ const defaultOptions = {
 	onStart: noop,
 	onStep: noop,
 	onEnd: noop,
+	loop: false,
 }
 
 function noop(){}

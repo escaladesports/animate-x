@@ -1,5 +1,6 @@
 import clone from 'clone'
 import rafLoop from 'raf-loop'
+import { tween } from 'keyframe-x'
 
 class Animate{
 	constructor(options){
@@ -16,13 +17,8 @@ class Animate{
 	reset() {
 		this.stop()
 		this.time = 0
-		this.type = typeof this.from
-		if (this.type === 'number') {
-			this.state = this.from
-		}
-		else {
-			this.state = clone(this.from)
-		}
+		this.keyframe = tween(this.from, this.to)
+		this.state = this.keyframe(0)
 		this.onStep(this.state)
 		return this
 	}
@@ -55,18 +51,13 @@ class Animate{
 			this.end()
 			return this
 		}
-		if(this.type === 'number'){
-			this.state = this.tweenNumber(this.from, this.to)
-		}
-		else {
-			this.deepTween(this.state, this.from, this.to)
-		}
+		this.state = this.keyframe(this.easing(this.time / this.duration))
 		this.onStep(this.state)
 		return this
 	}
 	end() {
 		this.stop()
-		this.state = clone(this.to)
+		this.state = this.keyframe(1)
 		this.onStep(this.state)
 		this.onEnd()
 		return this
@@ -88,19 +79,6 @@ class Animate{
 			this.unpause()
 		}
 		return this
-	}
-	tweenNumber(from, to) {
-		return from + this.easing(this.time / this.duration) * (to - from)
-	}
-	deepTween(state, from, to){
-		for(let i in from){
-			if (typeof from[i] === 'number'){
-				state[i] = this.tweenNumber(from[i], to[i])
-			}
-			else{
-				this.deepTween(state[i], from[i], to[i])
-			}
-		}
 	}
 }
 

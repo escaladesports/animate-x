@@ -3614,6 +3614,14 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
+keyframe-x@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/keyframe-x/-/keyframe-x-1.0.3.tgz#cc65f886163d5c656e15e302652be4680ccdfb37"
+  dependencies:
+    babel-runtime "^6.26.0"
+    clone "^1.0.4"
+    string-tween "^0.1.0"
+
 killable@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/killable/-/killable-1.0.0.tgz#da8b84bd47de5395878f95d64d02f2449fe05e6b"
@@ -6029,6 +6037,10 @@ strict-uri-encode@^1.0.0:
 string-hash@1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/string-hash/-/string-hash-1.1.3.tgz#e8aafc0ac1855b4666929ed7dd1275df5d6c811b"
+
+string-tween@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/string-tween/-/string-tween-0.1.0.tgz#34e4e86430bd6869cc9781b00eec19691e51be58"
 
 string-width@^1.0.1, string-width@^1.0.2:
   version "1.0.2"

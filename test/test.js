@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import Animate from '../src'
+import Animate from '../dist'
 
 describe('Animate class', () => {
 	it('Should have state', () => {

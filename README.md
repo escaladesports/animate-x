@@ -23,7 +23,7 @@ yarn add animate-x
 ```javascript
 var Animate = require('animate-x')
 
-var anim = new Animation({
+var anim = new Animate({
       from: 0,
       to: 100,
       duration: 1000,
@@ -45,7 +45,7 @@ var eases = require('eases')
 
 var el = document.querySelector('div')
 
-var anim = new Animation({
+var anim = new Animate({
       from: {
          x: 0,
          y: 0
